@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CreateUserViewController: UIViewController {
-
+class CreateUserViewController: UIViewController, UITextFieldDelegate {
+    private var speaker = String()
+    @IBOutlet weak var textfield: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        textfield.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +22,22 @@ class CreateUserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        speaker = textField.text!
+    }
+    @IBAction func create(_ sender: UIButton) {
+        DispatchQueue.global(qos: .background).async {
+            _ = Connection().createUser(speakerId: self.speaker)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "enroll", sender: nil)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

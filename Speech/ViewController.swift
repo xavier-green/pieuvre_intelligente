@@ -23,6 +23,11 @@ class ViewController : UIViewController, AudioControllerDelegate {
   @IBOutlet weak var textView: UITextView!
   var audioData: NSMutableData!
 
+    @IBAction func gotoenroll(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Enrolement", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "EnrolementViewController") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
   override func viewDidLoad() {
     super.viewDidLoad()
     AudioController.sharedInstance.delegate = self

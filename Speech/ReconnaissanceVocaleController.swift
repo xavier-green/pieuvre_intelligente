@@ -14,7 +14,6 @@ class ReconnaissanceVocaleController {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer : AVAudioPlayer!
-    var Server : ServerFunctions!
     private var fileUrl : URL!
     
     var recordingOkay: Bool = false
@@ -24,7 +23,6 @@ class ReconnaissanceVocaleController {
         recordingSession = AVAudioSession.sharedInstance()
         
         //On initialise le serveur de nuance qui fera les vérifications / enrollement
-        Server = ServerFunctions()
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
@@ -63,11 +61,12 @@ class ReconnaissanceVocaleController {
             AVSampleRateKey: 8000,
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ]
+        ] as [String : Any]
         
         if self.recordingOkay {
             
             print("currently recording...")
+            
             
             do {
                 audioRecorder = try AVAudioRecorder(url: fileUrl, settings: settings)
@@ -85,29 +84,8 @@ class ReconnaissanceVocaleController {
         audioRecorder.stop()
         audioRecorder = nil
     }
-    
-    /* Fonction d'authentification d'une personne avec Nuance
-    Parametres:
-        - username: pseudo de la personne à authentifier
-        - fileUrl (accessible dans la classe): fichier son à convertir en base64 puis envoyer à Nuance
-    Retour:
-        - Boolean: true/false
-    */
-    func verify(username: String) -> Bool {
-        let base64data = NSData(contentsOf: fileUrl)?.base64EncodedString()
-        return Server.verify(username: username, audio: base64data!.RFC3986UnreservedEncoded)
-    }
-    
-    /* Fonction d'enrollement d'une personne avec Nuance
-     Parametres:
-     - username: pseudo de la personne à authentifier
-     - fileUrl (accessible dans la classe): fichier son à convertir en base64 puis envoyer à Nuance
-     Retour:
-     - String: représente où Nuance en est de l'enrollement (si le son etait okay, si l'enrollement est en cours / terminé)
-     */
-    func enroll(username: String) -> String {
-        let base64data = NSData(contentsOf: fileUrl)?.base64EncodedString()
-        return Server.enroll(username: username, audio: base64data!.RFC3986UnreservedEncoded)
+    func enroll(speakerId: String) {
+        ConnectiontoBackServer().enroll(speakerId: speakerId, fileUrl: fileUrl)
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
