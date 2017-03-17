@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Connection {
+class MicrosoftConnection {
     
     init() {
         print("Initialising back server connection")

@@ -87,7 +87,7 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
                             }
                         }
                         if (fullText != "") {
-                            let resp = Connection().sentiment(sentence: fullText)
+                            let resp = MicrosoftConnection().sentiment(sentence: fullText)
                             print("sentiment score:")
                             print(String(resp))
                             let sendData = [
