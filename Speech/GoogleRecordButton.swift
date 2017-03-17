@@ -76,7 +76,7 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
                     if let response = response {
                         var finished = false
                         var fullText = ""
-                        //                print(response)
+                        // print(response)
                         for result in response.resultsArray! {
                             if let result = result as? StreamingRecognitionResult {
                                 if result.isFinal {
@@ -87,7 +87,14 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
                             }
                         }
                         if (fullText != "") {
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_TEXT"), object: fullText)
+                            let resp = Connection().sentiment(sentence: fullText)
+                            print("sentiment score:")
+                            print(String(resp))
+                            let sendData = [
+                                String(resp),
+                                fullText
+                            ]
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_TEXT"), object: sendData)
                         }
                         if finished {
                             strongSelf.stopAudio()
