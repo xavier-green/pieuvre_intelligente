@@ -14,20 +14,26 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
     
     var audioData: NSMutableData!
     var recording: Bool = false
+    let micOffImage = UIImage(named: "micOff")
+    let micOnImage = UIImage(named: "micOn")
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         AudioController.sharedInstance.delegate = self
         self.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        self.setTitle("START", for: .normal)
+        self.setTitle("", for: .normal)
+        self.setBackgroundImage(micOnImage, for: .normal)
     }
     
     func buttonTapped() {
         if recording {
-            self.setTitle("START", for: .normal)
+//            self.setTitle("START", for: .normal)
+            self.setBackgroundImage(micOnImage, for: .normal)
             stopAudio()
+            recording = false
         } else {
-            self.setTitle("STOP", for: .normal)
+//            self.setTitle("STOP", for: .normal)
+            self.setBackgroundImage(micOffImage, for: .normal)
             recordAudio()
             recording = true
         }
