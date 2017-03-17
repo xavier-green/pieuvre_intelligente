@@ -1,0 +1,106 @@
+{
+  "name": "express-mongoose-es6-rest-api",
+  "version": "1.0.0",
+  "description": "A Boilerplate application for building REST APIs using express, mongoose in ES6 / CommonJS",
+  "author": "Nayef Ghattas <gandem@via.ecp.fr>",
+  "contributors": [
+    {
+      "name": "Kylian Serrania",
+      "email": "matto@via.ecp.fr"
+    },
+    {
+      "name": "Yiren Wang",
+      "email": "animato@via.ecp.fr"
+    }
+  ],
+  "main": "index.js",
+  "private": false,
+  "engines": {
+    "node": "4.4.x",
+    "npm": "3.9.x"
+  },
+  "scripts": {
+    "start-dev": "nodemon index.js",
+    "commit": "git-cz",
+    "report-coverage": "coveralls < ./coverage/lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:KunalKapadia/express-mongoose-es6-rest-api.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "node.js",
+    "mongodb",
+    "mongoose",
+    "es6",
+    "mocha",
+    "REST",
+    "API",
+    "boilerplate"
+  ],
+  "dependencies": {
+    "bluebird": "^3.1.4",
+    "body-parser": "^1.14.2",
+    "compression": "^1.6.1",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.1",
+    "cors": "^2.7.1",
+    "debug": "^2.2.0",
+    "express": "4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-jwt": "3.4.0",
+    "express-session": "^1.14.1",
+    "express-validation": "1.0.0",
+    "express-winston": "^1.2.0",
+    "helmet": "2.1.1",
+    "http-status": "^0.2.0",
+    "joi": "8.4.2",
+    "js2xmlparser": "3.0.0",
+    "jsonwebtoken": "7.1.9",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.3.7",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-autopopulate": "^0.5.0",
+    "morgan": "1.7.0",
+    "nodemailer": "^3.1.4",
+    "nodemon": "^1.10.2",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "coveralls": "^2.11.6",
+    "cz-conventional-changelog": "1.1.5",
+    "del": "^2.2.0",
+    "eslint": "^3.4.0",
+    "eslint-config-airbnb-base": "^7.0.0",
+    "eslint-plugin-import": "^1.14.0",
+    "ghooks": "^1.2.0",
+    "isparta": "4.0.0",
+    "mocha": "2.5.3",
+    "run-sequence": "^1.1.5",
+    "supertest": "^1.1.0",
+    "supertest-as-promised": "3.1.0",
+    "validate-commit-msg": "^2.6.1"
+  },
+  "license": "MIT",
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint && npm test",
+      "commit-msg": "validate-commit-msg"
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  }
+}
