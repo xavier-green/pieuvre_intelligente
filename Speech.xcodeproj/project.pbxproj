@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EFC6BDC1E7C40D400CB4313 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD51E7C40D400CB4313 /* CreateUserViewController.swift */; };
+		0EFC6BDD1E7C40D400CB4313 /* git s.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD61E7C40D400CB4313 /* git s.storyboard */; };
+		0EFC6BDE1E7C40D400CB4313 /* MIcrosoft Connection Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD71E7C40D400CB4313 /* MIcrosoft Connection Methods.swift */; };
+		0EFC6BDF1E7C40D400CB4313 /* Microsoft Server Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD81E7C40D400CB4313 /* Microsoft Server Connection.swift */; };
+		0EFC6BE01E7C40D400CB4313 /* NuanceButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD91E7C40D400CB4313 /* NuanceButtonClass.swift */; };
+		0EFC6BE11E7C40D400CB4313 /* ReconnaissanceVocaleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BDA1E7C40D400CB4313 /* ReconnaissanceVocaleController.swift */; };
+		0EFC6BE21E7C40D400CB4313 /* recordbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BDB1E7C40D400CB4313 /* recordbutton.swift */; };
+		0EFC6BC21E7BF82400CB4313 /* Enrolement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFC6BC11E7BF82400CB4313 /* Enrolement.storyboard */; };
+		0EFC6BC51E7BF8CB00CB4313 /* Microsoft Server Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BC41E7BF8CB00CB4313 /* Microsoft Server Connection.swift */; };
+		0EFC6BC71E7BFB9500CB4313 /* MIcrosoft Connection Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BC61E7BFB9500CB4313 /* MIcrosoft Connection Methods.swift */; };
+		0EFC6BCA1E7BFBC400CB4313 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BC91E7BFBC400CB4313 /* CreateUserViewController.swift */; };
+		0EFC6BD31E7C15C200CB4313 /* NuanceButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD11E7C15C200CB4313 /* NuanceButtonClass.swift */; };
+		0EFC6BD41E7C15C200CB4313 /* ReconnaissanceVocaleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFC6BD21E7C15C200CB4313 /* ReconnaissanceVocaleController.swift */; };
 		2C450CC6320CA9890051ABAF /* Pods_Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B7F558BD8BC89862C8C277 /* Pods_Speech.framework */; };
 		430807381E7BF74A00517683 /* Pieuvre.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430807371E7BF74A00517683 /* Pieuvre.storyboard */; };
 		430807461E7BF86C00517683 /* PieuvrePseudoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430807421E7BF86C00517683 /* PieuvrePseudoAddViewController.swift */; };
@@ -28,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EFC6BD51E7C40D400CB4313 /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		0EFC6BD61E7C40D400CB4313 /* git s.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "git s.storyboard"; sourceTree = "<group>"; };
+		0EFC6BD71E7C40D400CB4313 /* MIcrosoft Connection Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MIcrosoft Connection Methods.swift"; sourceTree = "<group>"; };
+		0EFC6BD81E7C40D400CB4313 /* Microsoft Server Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Microsoft Server Connection.swift"; sourceTree = "<group>"; };
+		0EFC6BD91E7C40D400CB4313 /* NuanceButtonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuanceButtonClass.swift; sourceTree = "<group>"; };
+		0EFC6BDA1E7C40D400CB4313 /* ReconnaissanceVocaleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReconnaissanceVocaleController.swift; sourceTree = "<group>"; };
+		0EFC6BDB1E7C40D400CB4313 /* recordbutton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recordbutton.swift; sourceTree = "<group>"; };
 		430807371E7BF74A00517683 /* Pieuvre.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pieuvre.storyboard; sourceTree = "<group>"; };
 		430807421E7BF86C00517683 /* PieuvrePseudoAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieuvrePseudoAddViewController.swift; sourceTree = "<group>"; };
 		430807431E7BF86C00517683 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +58,12 @@
 		4308074E1E7C06A800517683 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		430807511E7C07F100517683 /* CustomButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		430807531E7C08ED00517683 /* GoogleRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleRecordButton.swift; sourceTree = "<group>"; };
+		0EFC6BC11E7BF82400CB4313 /* Enrolement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Enrolement.storyboard; sourceTree = "<group>"; };
+		0EFC6BC41E7BF8CB00CB4313 /* Microsoft Server Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Microsoft Server Connection.swift"; sourceTree = "<group>"; };
+		0EFC6BC61E7BFB9500CB4313 /* MIcrosoft Connection Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MIcrosoft Connection Methods.swift"; sourceTree = "<group>"; };
+		0EFC6BC91E7BFBC400CB4313 /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		0EFC6BD11E7C15C200CB4313 /* NuanceButtonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuanceButtonClass.swift; sourceTree = "<group>"; };
+		0EFC6BD21E7C15C200CB4313 /* ReconnaissanceVocaleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReconnaissanceVocaleController.swift; sourceTree = "<group>"; };
 		54C3D1E96C8C43AB14662311 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E83ACE29B0D0DF0085BA8F2 /* Pods-Speech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Speech.release.xcconfig"; path = "Pods/Target Support Files/Pods-Speech/Pods-Speech.release.xcconfig"; sourceTree = "<group>"; };
 		6C682F8DD9C94E41979FE816 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +94,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EFC6BE31E7C40FA00CB4313 /* Enrolment */ = {
+			isa = PBXGroup;
+			children = (
+				0EFC6BD51E7C40D400CB4313 /* CreateUserViewController.swift */,
+			);
+			name = Enrolment;
+			sourceTree = "<group>";
+		};
+		0EFC6BE41E7C410400CB4313 /* Identification */ = {
+			isa = PBXGroup;
+			children = (
+				0EFC6BD71E7C40D400CB4313 /* MIcrosoft Connection Methods.swift */,
+				0EFC6BD81E7C40D400CB4313 /* Microsoft Server Connection.swift */,
+				0EFC6BD91E7C40D400CB4313 /* NuanceButtonClass.swift */,
+				0EFC6BDA1E7C40D400CB4313 /* ReconnaissanceVocaleController.swift */,
+				0EFC6BDB1E7C40D400CB4313 /* recordbutton.swift */,
+			);
+			name = Identification;
+		};
+		0EFC6BC81E7BFBB300CB4313 /* Enrolment */ = {
+			isa = PBXGroup;
+			children = (
+				0EFC6BC91E7BFBC400CB4313 /* CreateUserViewController.swift */,
+			);
+			name = Enrolment;
+			sourceTree = "<group>";
+		};
 		32C6BA1B2FA20A9904F13B95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +145,9 @@
 			children = (
 				430807371E7BF74A00517683 /* Pieuvre.storyboard */,
 				D34C17DA1C948F5800D69BCA /* LaunchScreen.storyboard */,
+				0EFC6BD61E7C40D400CB4313 /* git s.storyboard */,
 				D392D9851C94937D002F5132 /* Main.storyboard */,
+				0EFC6BC11E7BF82400CB4313 /* Enrolement.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -100,7 +155,8 @@
 		430807361E7BEBD000517683 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				430807391E7BF7C600517683 /* Pieuvre */,
+				D3E34EA41D7757CC00EF755D /* ViewController.swift */,
+				0EFC6BC81E7BFBB300CB4313 /* Enrolment */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -147,7 +203,7 @@
 		D34C17CB1C948F5700D69BCA /* Speech */ = {
 			isa = PBXGroup;
 			children = (
-				430807501E7C07D800517683 /* Components */,
+				0EFC6BC31E7BF8A300CB4313 /* Identification */,
 				430807361E7BEBD000517683 /* Controllers */,
 				430807351E7BEBB100517683 /* Storyboard */,
 				430807341E7BEB8F00517683 /* Google Speech API */,
@@ -243,8 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D392D9861C94937D002F5132 /* Main.storyboard in Resources */,
-				430807381E7BF74A00517683 /* Pieuvre.storyboard in Resources */,
+				0EFC6BC21E7BF82400CB4313 /* Enrolement.storyboard in Resources */,
 				D34C17DC1C948F5800D69BCA /* LaunchScreen.storyboard in Resources */,
+				0EFC6BDD1E7C40D400CB4313 /* git s.storyboard in Resources */,
 				D34C17D91C948F5800D69BCA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,13 +364,24 @@
 				430807461E7BF86C00517683 /* PieuvrePseudoAddViewController.swift in Sources */,
 				D31E0EBA1D77AA2F006A50AB /* AudioController.swift in Sources */,
 				430807481E7BF86C00517683 /* TexteViewController.swift in Sources */,
+				0EFC6BE11E7C40D400CB4313 /* ReconnaissanceVocaleController.swift in Sources */,
+				0EFC6BDC1E7C40D400CB4313 /* CreateUserViewController.swift in Sources */,
 				4308074B1E7BF8A900517683 /* GlobalVariables.swift in Sources */,
 				430807521E7C07F100517683 /* CustomButtons.swift in Sources */,
+				0EFC6BC71E7BFB9500CB4313 /* MIcrosoft Connection Methods.swift in Sources */,
+				0EFC6BC51E7BF8CB00CB4313 /* Microsoft Server Connection.swift in Sources */,
+				0EFC6BD41E7C15C200CB4313 /* ReconnaissanceVocaleController.swift in Sources */,
+				0EFC6BCA1E7BFBC400CB4313 /* CreateUserViewController.swift in Sources */,
 				D31E0EB81D778A56006A50AB /* SpeechRecognitionService.swift in Sources */,
+				0EFC6BDE1E7C40D400CB4313 /* MIcrosoft Connection Methods.swift in Sources */,
 				D3E34EA51D7757CC00EF755D /* ViewController.swift in Sources */,
+				0EFC6BE21E7C40D400CB4313 /* recordbutton.swift in Sources */,
+				0EFC6BE01E7C40D400CB4313 /* NuanceButtonClass.swift in Sources */,
 				4308074D1E7BF8BF00517683 /* ExtensionUIViewController.swift in Sources */,
 				4308074F1E7C06A800517683 /* Reachability.swift in Sources */,
+				0EFC6BDF1E7C40D400CB4313 /* Microsoft Server Connection.swift in Sources */,
 				430807471E7BF86C00517683 /* StatsViewController.swift in Sources */,
+				0EFC6BD31E7C15C200CB4313 /* NuanceButtonClass.swift in Sources */,
 				D3E34EA11D77541D00EF755D /* AppDelegate.swift in Sources */,
 				430807491E7BF86C00517683 /* VoicetoTextViewController.swift in Sources */,
 				430807541E7C08ED00517683 /* GoogleRecordButton.swift in Sources */,
