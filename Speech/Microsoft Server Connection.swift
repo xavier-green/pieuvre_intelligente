@@ -215,51 +215,25 @@ class ConnectiontoBackServer {
         return connectToServer(url: url, params: params, method: "POST", notificationString: "CREATED_USER")
         
     }
+    
     func enroll(speakerId:String, fileUrl: URL) {
         let headers = [
-            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+            "content-type": "application/json",
             "cache-control": "no-cache",
-            "postman-token": "8a246f96-bd57-3971-3dff-b8fafeb442d9"
         ]
-        let parameters = [
-            [
-                "name": "audiofile",
-                "fileName": "recording.wav",
-                "content-type": "application/octet-stream"
-            ],
-        ]
+        let fileData = try! NSData(contentsOf: fileUrl, options: NSData.ReadingOptions.mappedIfSafe)
+        let base64String = fileData.base64EncodedString(options: [])
+        print(base64String)
+        let parameters = ["audio": "\(base64String)"] as [String : Any]
         
-        let boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
+        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
-        var body = ""
-        var error: NSError? = nil
-        for param in parameters {
-            let paramName = param["name"]!
-            body += "--\(boundary)\r\n"
-            body += "Content-Disposition:form-data; name=\"\(paramName)\""
-            if let filename = param["fileName"] {
-                let contentType = param["content-type"]!
-                let fileContent = try! String(contentsOf: fileUrl)
-                print(fileContent)
-                if (error != nil) {
-                    print(error!)
-                }
-                body += "; filename=\"\(filename)\"\r\n"
-                body += "Content-Type: \(contentType)\r\n\r\n"
-                body += fileContent
-            } else if let paramValue = param["value"] {
-                body += "\r\n\r\n\(paramValue)"
-            }
-        }
-        
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:3000/api/users/youyoun/upload")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:3000/api/users/\(speakerId)/upload")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
-        let postData = body.data(using: .utf8)
-
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
-        request.httpBody = postData! as Data
+        request.httpBody = postData as Data
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
@@ -272,10 +246,7 @@ class ConnectiontoBackServer {
         })
         
         dataTask.resume()
-        
-
     }
-        
 }
 
 
