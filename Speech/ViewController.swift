@@ -14,12 +14,8 @@
 // limitations under the License.
 //
 import UIKit
-import AVFoundation
-import googleapis
 
-let SAMPLE_RATE = 16000
-
-class ViewController : UIViewController, AudioControllerDelegate {
+class ViewController : UIViewController {
   @IBOutlet weak var textView: UITextView!
   var audioData: NSMutableData!
 
@@ -28,67 +24,15 @@ class ViewController : UIViewController, AudioControllerDelegate {
         let controller = storyboard.instantiateViewController(withIdentifier: "EnrolementViewController") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func gotoPieuvre(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Pieuvre", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "pieuvreNavigationController") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
-    AudioController.sharedInstance.delegate = self
   }
-
-  @IBAction func recordAudio(_ sender: NSObject) {
-    let audioSession = AVAudioSession.sharedInstance()
-    do {
-      try audioSession.setCategory(AVAudioSessionCategoryRecord)
-    } catch {
-
-    }
-    audioData = NSMutableData()
-    _ = AudioController.sharedInstance.prepare(specifiedSampleRate: SAMPLE_RATE)
-    SpeechRecognitionService.sharedInstance.sampleRate = SAMPLE_RATE
-    _ = AudioController.sharedInstance.start()
-  }
-
-  @IBAction func stopAudio(_ sender: NSObject) {
-    _ = AudioController.sharedInstance.stop()
-    SpeechRecognitionService.sharedInstance.stopStreaming()
-  }
-
-  func processSampleData(_ data: Data) -> Void {
-    audioData.append(data)
-
-    // We recommend sending samples in 100ms chunks
-    let chunkSize : Int /* bytes/chunk */ = Int(0.1 /* seconds/chunk */
-      * Double(SAMPLE_RATE) /* samples/second */
-      * 2 /* bytes/sample */);
-
-    if (audioData.length > chunkSize) {
-      SpeechRecognitionService.sharedInstance.streamAudioData(audioData,
-                                                              completion:
-        { [weak self] (response, error) in
-            guard let strongSelf = self else {
-                return
-            }
-            
-            if let error = error {
-                strongSelf.textView.text = error.localizedDescription
-            } else if let response = response {
-                var finished = false
-                var fullText = ""
-//                print(response)
-                for result in response.resultsArray! {
-                    if let result = result as? StreamingRecognitionResult {
-                        if result.isFinal {
-                            print(result.alternativesArray[0])
-                            fullText = (result.alternativesArray[0] as AnyObject).transcript
-                            finished = true
-                        }
-                    }
-                }
-                strongSelf.textView.text = fullText
-                if finished {
-                    strongSelf.stopAudio(strongSelf)
-                }
-            }
-      })
-      self.audioData = NSMutableData()
-    }
-  }
+    
 }

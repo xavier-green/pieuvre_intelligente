@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 import googleapis
 
+let SAMPLE_RATE = 16000
+
 class GoogleRecordButton: UIButton, AudioControllerDelegate {
     
     var audioData: NSMutableData!

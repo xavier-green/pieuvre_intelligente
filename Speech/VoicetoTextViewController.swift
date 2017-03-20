@@ -69,9 +69,11 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
         
         print("got phrase")
         
-        let result = notification.object as! String
-        phrasesInOrder.append(result)
-        wordCount(s: result)
+        let result = notification.object as! [String]
+//        let score = result[0]
+        let phrase = result[1]
+        phrasesInOrder.append(phrase)
+        wordCount(s: phrase)
         
     }
     
