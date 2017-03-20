@@ -221,6 +221,10 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lJL-cG-5C4">
+                                <rect key="frame" x="111" y="604" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -238,6 +242,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="lJL-cG-5C4" id="mtf-Tb-zRp"/>
                         <outlet property="usernames" destination="ddu-0I-oMB" id="dQO-sZ-FOV"/>
                         <segue destination="ujj-aN-FVU" kind="presentation" identifier="showTexteSegue" modalTransitionStyle="coverVertical" id="C7F-DU-nuv"/>
                         <segue destination="L6A-UO-5Ga" kind="presentation" identifier="gotoStats" modalTransitionStyle="coverVertical" id="lTi-bn-e7g"/>
