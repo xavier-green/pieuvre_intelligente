@@ -11,7 +11,7 @@ import UIKit
 class PieuvrePseudoAddViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var testUsernames: [String] = []
-//    var capUsernames = [String]()
+    var capUsernames = [String]()
     
     @IBOutlet var usernamesView: UITableView!
     @IBOutlet var validation: UILabel!
@@ -24,13 +24,13 @@ class PieuvrePseudoAddViewController: UIViewController, UITableViewDelegate, UIT
         usernamesView.dataSource=self
         usernameAdd.delegate=self
         self.hideKeyboardWhenTappedAround()
-//        DispatchQueue.global(qos: .background).async {
-//            var capUsers = CotoBackMethods().getUsersNames()[0] as! [String]
-//            capUsers = capUsers.sorted{$0.localizedCompare($1) == .orderedAscending}
-//            DispatchQueue.main.async {
-//                self.capUsernames = capUsers
-//            }
-//        }
+        DispatchQueue.global(qos: .background).async {
+            var capUsers = CotoBackMethods().getUsersNames()[0] as! [String]
+            capUsers = capUsers.sorted{$0.localizedCompare($1) == .orderedAscending}
+            DispatchQueue.main.async {
+                self.capUsernames = capUsers
+            }
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(self.deleteUser), name: NSNotification.Name(rawValue: "DELETE_PIEUVRE_USER"), object: nil)
     }
     
@@ -73,20 +73,20 @@ class PieuvrePseudoAddViewController: UIViewController, UITableViewDelegate, UIT
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         let nickname = textField.text!
-//        if !isValidName(testStr: nickname) {
-//            validation.isHidden=false
-//            validation.text = "Lettres et chiffres uniquement"
-//        } else {
-//            if !isValidUsername(username: nickname, allUsernames: self.capUsernames) {
-//                validation.isHidden=false
-//                validation.text = "Le pseudo n'existe pas"
-//            } else {
+        if !isValidName(testStr: nickname) {
+            validation.isHidden=false
+            validation.text = "Lettres et chiffres uniquement"
+        } else {
+            if !isValidUsername(username: nickname, allUsernames: self.capUsernames) {
+                validation.isHidden=false
+                validation.text = "Le pseudo n'existe pas"
+            } else {
                 self.testUsernames.append(nickname)
                 self.usernamesView.reloadData()
                 textField.text = ""
                 validation.isHidden=true
-//            }
-//        }
+            }
+        }
     }
 
     @IBAction func backToSelection(_ sender: Any) {

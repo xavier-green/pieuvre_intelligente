@@ -12,7 +12,7 @@
 import Foundation
 import UIKit
 
-class ConnectiontoBackServer {
+class ConnectiontoBackServerMicrosoft {
     
     init() {
         print("Initialising back server connection")
@@ -232,7 +232,7 @@ class ConnectiontoBackServer {
         let boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
         
         var body = ""
-        var error: NSError? = nil
+        let error: NSError? = nil
         for param in parameters {
             let paramName = param["name"]!
             body += "--\(boundary)\r\n"

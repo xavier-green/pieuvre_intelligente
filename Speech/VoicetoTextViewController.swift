@@ -67,6 +67,7 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
         
         print("got name")
         let result = notification.object as! String
+        print(result)
         namesInOrder.append(result)
         self.speakingUsername = result
         usernames.beginUpdates()
@@ -104,11 +105,11 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setGlobalVariables() {
-//        GlobalVariables.namesInOrder = self.namesInOrder
+        GlobalVariables.namesInOrder = self.namesInOrder
         GlobalVariables.phrasesInOrder = self.phrasesInOrder
         print("setting global variables:")
         print(self.wordCount)
-//        GlobalVariables.wordCount = self.wordCount
+        GlobalVariables.wordCount = self.wordCount
     }
     
     @IBAction func getStats(_ sender: Any) {

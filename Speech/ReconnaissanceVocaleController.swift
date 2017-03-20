@@ -14,6 +14,7 @@ class ReconnaissanceVocaleController {
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer : AVAudioPlayer!
+    var Server : ServerFunctions!
     private var fileUrl : URL!
     
     var recordingOkay: Bool = false
@@ -21,6 +22,7 @@ class ReconnaissanceVocaleController {
     init() {
         print("App started")
         recordingSession = AVAudioSession.sharedInstance()
+        Server = ServerFunctions()
         
         //On initialise le serveur de nuance qui fera les vérifications / enrollement
         do {
@@ -47,6 +49,12 @@ class ReconnaissanceVocaleController {
             print("IS RECORDING")
             return true
         }
+    }
+    
+    func getScore(username: String) -> Int {
+        let base64data = NSData(contentsOf: fileUrl)?.base64EncodedString()
+        let score = Server.getScore(username: username, audio: base64data!.RFC3986UnreservedEncoded)
+        return score
     }
     
     // Début d'enregistrement
@@ -85,7 +93,7 @@ class ReconnaissanceVocaleController {
         audioRecorder = nil
     }
     func enroll(speakerId: String) {
-        ConnectiontoBackServer().enroll(speakerId: speakerId, fileUrl: fileUrl)
+        ConnectiontoBackServerMicrosoft().enroll(speakerId: speakerId, fileUrl: fileUrl)
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
