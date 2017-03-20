@@ -48,6 +48,12 @@ class Connection {
         return userJSON
     }
     
+    func enrollCheck(speakerId: String) -> String {
+        let dataString = Server.enrollCheck(speakerId: speakerId)
+        let jsonData = parseJson(jsonString: dataString)
+        return jsonData["status"] as! String
+    }
+    
         init() {
         Server = ConnectiontoBackServer()
     }

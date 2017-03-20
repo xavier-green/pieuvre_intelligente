@@ -32,11 +32,12 @@ class CreateUserViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        speaker = textField.text!
+        GlobalVariables.username = textField.text!
     }
     @IBAction func create(_ sender: UIButton) {
+        textfield.resignFirstResponder()
         DispatchQueue.global(qos: .background).async {
-            _ = Connection().createUser(speakerId: self.speaker)
+            _ = Connection().createUser(speakerId: GlobalVariables.username)
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "enroll", sender: nil)
             }

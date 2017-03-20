@@ -15,8 +15,12 @@ class NuanceButtonClass: UIButton {
     func recordTapped() {
         if recoVocale.isRecording() {
             recoVocale.finishRecording(success: true)
-            recoVocale.enroll(speakerId: "youyoun")
-            recoVocale.playRecording()
+            DispatchQueue.global(qos: .background).async {
+                self.recoVocale.enroll(speakerId: GlobalVariables.username)
+                DispatchQueue.main.async {
+                    print("data sent")
+                }
+            }
         } else {
             recoVocale.startRecording()
         }

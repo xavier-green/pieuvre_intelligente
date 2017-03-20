@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="1172" y="14.842578710644679"/>
         </scene>
-        <!--View Controller-->
+        <!--Verify Enroll View Controller-->
         <scene sceneID="zHM-st-woq">
             <objects>
-                <viewController id="rSe-os-iv0" sceneMemberID="viewController">
+                <viewController id="rSe-os-iv0" customClass="VerifyEnrollViewController" customModule="Speech" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YwJ-Hh-O6A"/>
                         <viewControllerLayoutGuide type="bottom" id="SEV-Fx-ctu"/>
@@ -186,6 +186,9 @@
                                     <constraint firstAttribute="height" constant="30" id="liU-co-Q6N"/>
                                 </constraints>
                                 <state key="normal" title="Verify"/>
+                                <connections>
+                                    <action selector="VerifyButton:" destination="rSe-os-iv0" eventType="touchUpInside" id="yT8-oC-Tpj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-BP-zgg">
                                 <rect key="frame" x="144" y="378" width="87" height="21"/>
@@ -211,6 +214,9 @@
                             <constraint firstItem="SEV-Fx-ctu" firstAttribute="top" secondItem="jj7-Gb-WaA" secondAttribute="bottom" constant="512" id="zS1-bd-sRI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="verified" destination="ohi-BP-zgg" id="Sr1-tf-CKn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GG1-WT-gRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

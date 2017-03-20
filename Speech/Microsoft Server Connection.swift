@@ -247,6 +247,13 @@ class ConnectiontoBackServer {
         
         dataTask.resume()
     }
+    
+    func enrollCheck(speakerId:String) -> String {
+        let url: String = "/users/\(speakerId)/enrollCheck"
+        let params = [[]] as [[String]]
+        
+        return connectToServer(url: url, params: params, method: "GET", notificationString: "ENROLL_CHECK")
+    }
 }
 
 
