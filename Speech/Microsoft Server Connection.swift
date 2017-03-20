@@ -12,7 +12,7 @@
 import Foundation
 import UIKit
 
-class ConnectiontoBackServer {
+class ConnectiontoBackServerMicrosoft {
     
     init() {
         print("Initialising back server connection")

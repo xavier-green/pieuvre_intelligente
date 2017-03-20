@@ -19,12 +19,15 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
     let micOffImage = UIImage(named: "micOff")
     let micOnImage = UIImage(named: "micOn")
     
+    var recoVocale: ReconnaissanceVocaleController!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         AudioController.sharedInstance.delegate = self
         self.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         self.setTitle("", for: .normal)
         self.setBackgroundImage(micOnImage, for: .normal)
+        recoVocale = ReconnaissanceVocaleController()
     }
     
     func buttonTapped() {
@@ -34,11 +37,28 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
             stopAudio()
             recording = false
             NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_START"), object: nil)
+            recoVocale.finishRecording(success: true)
+            self.verify(namesArray: GlobalVariables.pieuvreUsernames)
         } else {
 //            self.setTitle("STOP", for: .normal)
             self.setBackgroundImage(micOffImage, for: .normal)
             recordAudio()
+            recoVocale.startRecording()
             recording = true
+        }
+    }
+    
+    func verify(namesArray: [String]) {
+        DispatchQueue.global(qos: .background).async {
+            var results = [Int]()
+            for name in namesArray {
+                results.append(self.recoVocale.getScore(username: name))
+            }
+            let maxScore = results.max()
+            let maxIndex = results.index(of: maxScore!)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_NAME"), object: namesArray[maxIndex!])
+            }
         }
     }
 

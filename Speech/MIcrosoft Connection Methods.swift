@@ -9,7 +9,7 @@
 import Foundation
 
 class Connection {
-    private var Server: ConnectiontoBackServer!
+    private var Server: ConnectiontoBackServerMicrosoft!
     private var currentUsername: String = ""
     
     
@@ -55,6 +55,6 @@ class Connection {
     }
     
         init() {
-        Server = ConnectiontoBackServer()
+        Server = ConnectiontoBackServerMicrosoft()
     }
 }
