@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 import googleapis
 
+let SAMPLE_RATE = 16000
+
 class GoogleRecordButton: UIButton, AudioControllerDelegate {
     
     var audioData: NSMutableData!
@@ -31,6 +33,7 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
             self.setBackgroundImage(micOnImage, for: .normal)
             stopAudio()
             recording = false
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_START"), object: nil)
         } else {
 //            self.setTitle("STOP", for: .normal)
             self.setBackgroundImage(micOffImage, for: .normal)

@@ -16,16 +16,28 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
     private var phrasesInOrder = [String]()
     private var wordCount = [Int]()
     
+    @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet weak var usernames: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.processResult), name: NSNotification.Name(rawValue: "PIEUVRE_TEXT"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.processName), name: NSNotification.Name(rawValue: "PIEUVRE_NAME"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startSpinner), name: NSNotification.Name(rawValue: "PIEUVRE_START"), object: nil)
         // Do any additional setup after loading the view.
         usernames.delegate=self
         usernames.dataSource=self
         print(GlobalVariables.pieuvreUsernames)
+        stopSpinner()
+    }
+    
+    func startSpinner() {
+        spinner.startAnimating()
+        spinner.isHidden = false
+    }
+    func stopSpinner() {
+        spinner.stopAnimating()
+        spinner.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +80,13 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
     func processResult(notification: NSNotification) {
         
         print("got phrase")
+        stopSpinner()
         
-        let result = notification.object as! String
-        phrasesInOrder.append(result)
-        wordCount(s: result)
+        let result = notification.object as! [String]
+//        let score = result[0]
+        let phrase = result[1]
+        phrasesInOrder.append(phrase)
+        wordCount(s: phrase)
         
     }
     

@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-718" y="17"/>
         </scene>
-        <!--Create User View Controller-->
+        <!--Créer un compte-->
         <scene sceneID="wzK-dC-YEC">
             <objects>
                 <viewController id="XNL-z7-hTW" customClass="CreateUserViewController" customModule="Speech" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,23 +66,41 @@
                                     <action selector="create:" destination="XNL-z7-hTW" eventType="touchUpInside" id="0PD-6v-BlI"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csU-bR-dqD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="hbx-TS-UUU"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="zua-Ex-jmW"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="csU-bR-dqD" firstAttribute="width" secondItem="iu6-51-TNd" secondAttribute="width" id="4b0-F3-1jz"/>
                             <constraint firstItem="dQH-dd-foD" firstAttribute="leading" secondItem="iu6-51-TNd" secondAttribute="leadingMargin" constant="102" id="IUF-lB-6qJ"/>
                             <constraint firstItem="1Zh-vv-hqb" firstAttribute="top" secondItem="9S8-fz-zF9" secondAttribute="bottom" constant="319" id="KkH-jd-DWN"/>
                             <constraint firstItem="dQH-dd-foD" firstAttribute="top" secondItem="5Lh-2y-aYC" secondAttribute="bottom" constant="98" id="QES-WE-Ir0"/>
                             <constraint firstItem="9S8-fz-zF9" firstAttribute="centerX" secondItem="iu6-51-TNd" secondAttribute="centerX" id="TMV-Bc-bMs"/>
                             <constraint firstItem="iei-cz-Ixm" firstAttribute="centerX" secondItem="iu6-51-TNd" secondAttribute="centerX" id="Xjv-1p-c5e"/>
+                            <constraint firstItem="csU-bR-dqD" firstAttribute="leading" secondItem="iu6-51-TNd" secondAttribute="leading" id="ZJ9-AF-6ZW"/>
                             <constraint firstItem="ZeJ-hr-da1" firstAttribute="top" secondItem="9S8-fz-zF9" secondAttribute="bottom" constant="100" id="aQZ-71-sbl"/>
                             <constraint firstItem="iei-cz-Ixm" firstAttribute="top" secondItem="dQH-dd-foD" secondAttribute="bottom" constant="63" id="edx-vo-oq0"/>
                             <constraint firstItem="9S8-fz-zF9" firstAttribute="top" secondItem="iei-cz-Ixm" secondAttribute="bottom" constant="51" id="nUy-8O-lNe"/>
                             <constraint firstItem="dQH-dd-foD" firstAttribute="centerX" secondItem="iu6-51-TNd" secondAttribute="centerX" id="rJd-YR-OF4"/>
+                            <constraint firstItem="csU-bR-dqD" firstAttribute="top" secondItem="iu6-51-TNd" secondAttribute="top" id="vfK-re-Nfs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dQH-dd-foD" secondAttribute="trailing" constant="102" id="xng-ds-MAl"/>
                             <constraint firstItem="ZeJ-hr-da1" firstAttribute="centerX" secondItem="iu6-51-TNd" secondAttribute="centerX" id="zwi-Ip-PhZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="nmu-eP-39Z"/>
+                    <navigationItem key="navigationItem" title="Créer un compte" id="nmu-eP-39Z">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Retour" id="Whh-tC-CFD">
+                            <connections>
+                                <action selector="backToHole:" destination="XNL-z7-hTW" id="ede-Ae-AO0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textfield" destination="9S8-fz-zF9" id="YET-Ef-RYf"/>
                         <segue destination="QvC-pg-R4l" kind="presentation" identifier="enroll" id="SsE-1w-b7Z"/>
