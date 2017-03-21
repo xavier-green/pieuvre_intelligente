@@ -39,6 +39,7 @@ class GoogleRecordButton: UIButton, AudioControllerDelegate {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "PIEUVRE_START"), object: nil)
             recoVocale.finishRecording(success: true)
             self.verify(namesArray: GlobalVariables.pieuvreUsernames)
+            recoVocale.identify()
         } else {
 //            self.setTitle("STOP", for: .normal)
             self.setBackgroundImage(micOffImage, for: .normal)

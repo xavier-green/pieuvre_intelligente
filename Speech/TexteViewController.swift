@@ -15,6 +15,12 @@ class TexteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("total elements: ",GlobalVariables.phrasesInOrder.count)
+        print(GlobalVariables.operationsInOrder)
+//        for i in 0...GlobalVariables.operationsInOrder.count-1 {
+//            let speaker = Connection().getSpeaker(operationUrl: GlobalVariables.operationsInOrder[i])
+//            print(speaker)
+//            GlobalVariables.namesInOrder.append(speaker)
+//        }
         self.texteView.text = ""
         self.processTexte()
     }

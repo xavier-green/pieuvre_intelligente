@@ -25,7 +25,9 @@ class PieuvrePseudoAddViewController: UIViewController, UITableViewDelegate, UIT
         usernameAdd.delegate=self
         self.hideKeyboardWhenTappedAround()
         DispatchQueue.global(qos: .background).async {
-            var capUsers = CotoBackMethods().getUsersNames()[0] as! [String]
+            //var capUsers = CotoBackMethods().getUsersNames()[0] as! [String]
+            var capUsers = Connection().getUsers()
+            print(capUsers)
             capUsers = capUsers.sorted{$0.localizedCompare($1) == .orderedAscending}
             DispatchQueue.main.async {
                 self.capUsernames = capUsers

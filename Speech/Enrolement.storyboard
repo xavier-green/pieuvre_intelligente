@@ -128,7 +128,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7p-qr-DcX" customClass="NuanceButtonClass" customModule="Speech" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Register" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7p-qr-DcX" customClass="NuanceButtonClass" customModule="Speech" customModuleProvider="target">
                                 <rect key="frame" x="52" y="209" width="263" height="239"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -199,6 +199,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcG-js-P0h">
                                 <rect key="frame" x="145" y="587" width="85" height="30"/>
                                 <state key="normal" title="End Process"/>
+                                <connections>
+                                    <action selector="endEnroll:" destination="rSe-os-iv0" eventType="touchUpInside" id="tHh-PB-IUl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

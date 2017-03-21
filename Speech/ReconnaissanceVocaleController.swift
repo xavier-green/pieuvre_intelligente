@@ -96,6 +96,11 @@ class ReconnaissanceVocaleController {
     func enroll(speakerId: String) {
         ConnectiontoBackServerMicrosoft().enroll(speakerId: speakerId, fileUrl: fileUrl)
     }
+    func identify() {
+        let response = ConnectiontoBackServerMicrosoft().identifySpeaker(fileUrl: fileUrl)
+        let url = response.replacingOccurrences(of: "\"", with: "", options: NSString.CompareOptions.literal, range: nil)
+        GlobalVariables.operationsInOrder.append(url)
+    }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {

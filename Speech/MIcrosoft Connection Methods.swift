@@ -42,16 +42,40 @@ class Connection {
      - usernames: [String] of users names
      - usernamesAuths: [Int] of users authentication number
      */
-    func createUser(speakerId: String) -> String {
-        let userJSON = Server.createUser(speakerId: speakerId)
-        print("User added :",userJSON)
-        return userJSON
+    func createUser(speakerId: String) {
+        Server.createUser(speakerId: speakerId)
+        print("User added ")
     }
     
     func enrollCheck(speakerId: String) -> String {
         let dataString = Server.enrollCheck(speakerId: speakerId)
         let jsonData = parseJson(jsonString: dataString)
         return jsonData["status"] as! String
+    }
+    func getUsers() -> Array<String> {
+        let usernamesJSON = Server.getUsersNames()
+        let data: Data = usernamesJSON.data(using: String.Encoding.utf8, allowLossyConversion: false)!
+        let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [AnyObject]
+        var usernames = [String]()
+        for object in json! {
+            let name = object["username"]!
+            if !usernames.contains(name as! String) {
+                usernames.append(name as! String)
+                GlobalVariables.idUsernameMatch[0].append(name as! String)
+                GlobalVariables.idUsernameMatch[1].append(object["identificationProfile"]! as! String)
+            }
+        }
+        return usernames as Array
+    }
+    
+    func getSpeaker(operationUrl: String) -> String {
+        let dataString = Server.checkUser(operationUrl: operationUrl)
+        print(dataString)
+        let jsonData = parseJson(jsonString: dataString)
+        if let speaker = jsonData["username"] {
+            return speaker as! String
+        }
+        else {return "Analysis still not finished"}
     }
     
         init() {

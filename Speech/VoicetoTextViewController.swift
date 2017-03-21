@@ -22,7 +22,7 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.processResult), name: NSNotification.Name(rawValue: "PIEUVRE_TEXT"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.processName), name: NSNotification.Name(rawValue: "PIEUVRE_NAME"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.processName), name: NSNotification.Name(rawValue: "PIEUVRE_NAME"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.startSpinner), name: NSNotification.Name(rawValue: "PIEUVRE_START"), object: nil)
         // Do any additional setup after loading the view.
         usernames.delegate=self
@@ -63,19 +63,33 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
         }
         return cell!
     }
-    func processName(notification: NSNotification) {
+//    func processName(notification: NSNotification) {
+//        
+//        print("got name")
+//        let result = notification.object as! String
+//        print(result)
+//        namesInOrder.append(result)
+//        self.speakingUsername = result
+//        usernames.beginUpdates()
+//        let indexPosition = GlobalVariables.pieuvreUsernames.index(of: result)
+//        usernames.moveRow(at: NSIndexPath(row: indexPosition!, section: 0) as IndexPath, to: NSIndexPath(row: 0, section: 0) as IndexPath)
+//        GlobalVariables.pieuvreUsernames.insert(GlobalVariables.pieuvreUsernames.remove(at: indexPosition!), at: 0)
+//        usernames.endUpdates()
+//        usernames.reloadData()
+//    }
+    
+    func setNamesInOrder() {
+        if GlobalVariables.operationsInOrder.count==0 {
+            self.namesInOrder.append("Unknown")
+        } else {
+        for i in 0...GlobalVariables.operationsInOrder.count-1 {
+            let speaker = Connection().getSpeaker(operationUrl: GlobalVariables.operationsInOrder[i])
+            print("the \(i) sentence was said by ",speaker)
+            self.namesInOrder.append(speaker)
+            GlobalVariables.operationsInOrder.remove(at: 0)
+            }
+        }
         
-        print("got name")
-        let result = notification.object as! String
-        print(result)
-        namesInOrder.append(result)
-        self.speakingUsername = result
-        usernames.beginUpdates()
-        let indexPosition = GlobalVariables.pieuvreUsernames.index(of: result)
-        usernames.moveRow(at: NSIndexPath(row: indexPosition!, section: 0) as IndexPath, to: NSIndexPath(row: 0, section: 0) as IndexPath)
-        GlobalVariables.pieuvreUsernames.insert(GlobalVariables.pieuvreUsernames.remove(at: indexPosition!), at: 0)
-        usernames.endUpdates()
-        usernames.reloadData()
     }
     
     func processResult(notification: NSNotification) {
@@ -105,6 +119,7 @@ class VoicetoTextViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func setGlobalVariables() {
+        setNamesInOrder()
         GlobalVariables.namesInOrder = self.namesInOrder
         GlobalVariables.phrasesInOrder = self.phrasesInOrder
         print("setting global variables:")

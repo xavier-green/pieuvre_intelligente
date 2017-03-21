@@ -171,7 +171,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xfv-dz-kE3" id="cfO-3o-FqZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvo-6l-mv9">
@@ -213,7 +213,7 @@
                                     <action selector="getStats:" destination="4gm-qC-d7W" eventType="touchUpInside" id="SFZ-dE-dyX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9Z-ey-wSh" customClass="GoogleRecordButton" customModule="Speech" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Identify" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9Z-ey-wSh" customClass="GoogleRecordButton" customModule="Speech" customModuleProvider="target">
                                 <rect key="frame" x="154.5" y="582" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="1uQ-sW-3ak"/>

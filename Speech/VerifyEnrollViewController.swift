@@ -31,6 +31,9 @@ class VerifyEnrollViewController: UIViewController {
         }
     }
 
+    @IBAction func endEnroll(_ sender: UIButton) {
+        self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

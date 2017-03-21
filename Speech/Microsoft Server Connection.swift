@@ -20,8 +20,8 @@ class ConnectiontoBackServerMicrosoft {
     /**
      SERVER INFORMATION
      **/
-    private let BASE_URL: String = "http://localhost:3000/api"
-    private let SERVER_USERNAME: String = "Youyoun"
+    private let BASE_URL: String = "http://vps383005.ovh.net:3000/api"
+    private let SERVER_USERNAME: String = "youyoun"
     private let SERVER_PASSWORD: String = "password"
     
     private var resultData: String = ""
@@ -120,6 +120,7 @@ class ConnectiontoBackServerMicrosoft {
         
         session.dataTask(with: request, completionHandler: { (data, response, error) in
             if error != nil {
+                print("error")
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "TIME_OUT_BACK"), object: errors)
                 return
             }
@@ -207,28 +208,19 @@ class ConnectiontoBackServerMicrosoft {
      - Parameters: None
      - Returns: Users Json
      */
-    func createUser(speakerId: String) -> String {
+    func createUser(speakerId: String) {
         
-        let url: String = "/users"
-        let params: [[String]] = [["username",speakerId]]
-        
-        return connectToServer(url: url, params: params, method: "POST", notificationString: "CREATED_USER")
-        
-    }
-    
-    func enroll(speakerId:String, fileUrl: URL) {
         let headers = [
             "content-type": "application/json",
+            "authorization": "Basic eW91eW91bjpwYXNzd29yZA==",
             "cache-control": "no-cache",
+            "postman-token": "c6ae6b90-bbcf-68ce-d5ca-e826acf83a1a"
         ]
-        let fileData = try! NSData(contentsOf: fileUrl, options: NSData.ReadingOptions.mappedIfSafe)
-        let base64String = fileData.base64EncodedString(options: [])
-        print(base64String)
-        let parameters = ["audio": "\(base64String)"] as [String : Any]
+        let parameters = ["username": speakerId] as [String : Any]
         
         let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:3000/api/users/\(speakerId)/upload")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "http://vps383005.ovh.net:3000/api/pieuvres")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         request.httpMethod = "POST"
@@ -240,8 +232,41 @@ class ConnectiontoBackServerMicrosoft {
             if (error != nil) {
                 print(error!)
             } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse!)
+                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as? String
+                print(dataString!)
+            }
+        })
+        
+        dataTask.resume()
+        
+    }
+    
+    func enroll(speakerId:String, fileUrl: URL) {
+        let headers = [
+            "content-type": "application/json",
+            "authorization": "Basic eW91eW91bjpwYXNzd29yZA==",
+            "cache-control": "no-cache",
+        ]
+        let fileData = try! NSData(contentsOf: fileUrl, options: NSData.ReadingOptions.mappedIfSafe)
+        let base64String = fileData.base64EncodedString(options: [])
+        let parameters = ["audio": "\(base64String)"] as [String : Any]
+        
+        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://vps383005.ovh.net:3000/api/pieuvres/\(speakerId)/upload")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as? String
+                print(dataString!)
             }
         })
         
@@ -249,10 +274,55 @@ class ConnectiontoBackServerMicrosoft {
     }
     
     func enrollCheck(speakerId:String) -> String {
-        let url: String = "/users/\(speakerId)/enrollCheck"
-        let params = [[]] as [[String]]
+        let url: String = "/pieuvres/\(speakerId)/enrollCheck"
+        let parameters = [[]] as [[String]]
         
-        return connectToServer(url: url, params: params, method: "GET", notificationString: "ENROLL_CHECK")
+        return connectToServer(url: url, params: parameters, method: "GET", notificationString: "ENROL_CHECK")
+    }
+    
+    func getUsersNames() -> String {
+        let url: String = "/pieuvres"
+        let parameters = [[]] as [[String]]
+        
+        return connectToServer(url: url, params: parameters, method: "GET", notificationString: "GET_USERS")
+    }
+    func identifySpeaker(fileUrl: URL) -> String {
+        let headers = [
+            "content-type": "application/json",
+            "authorization": "Basic eW91eW91bjpwYXNzd29yZA==",
+            "cache-control": "no-cache",
+            ]
+        let fileData = try! NSData(contentsOf: fileUrl, options: NSData.ReadingOptions.mappedIfSafe)
+        var idsArray = [String]()
+        for participant in GlobalVariables.pieuvreUsernames {
+            for i in 0...GlobalVariables.idUsernameMatch.count-1 {
+                if participant==GlobalVariables.idUsernameMatch[0][i] {
+                    idsArray.append(GlobalVariables.idUsernameMatch[1][i])
+                }
+            }
+        }
+        print(idsArray)
+        let base64String = fileData.base64EncodedString(options: [])
+        let parameters = ["audio": "\(base64String)","identificationProfiles":idsArray] as [String : Any]
+        
+        let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "http://vps383005.ovh.net:3000/api/pieuvres/identify")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
+        
+        let session = URLSession.shared
+        return sendRequest(session: session, request: request as URLRequest, notificationString: "SENT_IDENTIFICATION")
+    }
+    
+    func checkUser(operationUrl: String) -> String {
+        let url: String = "/pieuvres/checkOperation"
+        let parameters = [["url",operationUrl]]
+        
+        return connectToServer(url: url, params: parameters, method: "POST", notificationString: "CHECK_OPERATION")
     }
 }
 

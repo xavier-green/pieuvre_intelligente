@@ -15,11 +15,22 @@ class NuanceButtonClass: UIButton {
     func recordTapped() {
         if recoVocale.isRecording() {
             recoVocale.finishRecording(success: true)
-            DispatchQueue.global(qos: .background).async {
-                self.recoVocale.enroll(speakerId: GlobalVariables.username)
-                DispatchQueue.main.async {
-                    print("data sent")
+            if self.restorationIdentifier=="Register" {
+                DispatchQueue.global(qos: .background).async {
+                    self.recoVocale.enroll(speakerId: GlobalVariables.username)
+                    DispatchQueue.main.async {
+                        print("data sent")
+                    }
                 }
+            } else if self.restorationIdentifier=="Identify"{
+                DispatchQueue.global(qos: .background).async {
+                    self.recoVocale.identify()
+                    DispatchQueue.main.async {
+                        print("data sent")
+                    }
+                }
+            } else {
+                print("this button has no callback function")
             }
         } else {
             recoVocale.startRecording()

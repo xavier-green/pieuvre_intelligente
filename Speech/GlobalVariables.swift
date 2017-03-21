@@ -21,9 +21,11 @@ struct GlobalVariables {
     
     static var pieuvreUsernames = [String]()
     
+    static var operationsInOrder = [String]()
     static var namesInOrder = [String]()
     static var phrasesInOrder = [String]()
     
     static var words = Dictionary<String, Int>()
     static var wordCount = [Int]()
+    static var idUsernameMatch = [[String](),[String]()]
 }
